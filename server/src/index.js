@@ -1,5 +1,11 @@
+const dotenv=require("dotenv");
+dotenv.config();
+
 const app=require("./app");
-const PORT=8005;
-app.listen(PORT,()=>{
+const connectMongoDB=require("./config/db");
+const PORT=process.env.PORT || 8005;
+connectMongoDB(process.env.MONGO_URL).then(()=>{
+  app.listen(PORT,()=>{
   console.log(`Server running on port ${PORT}`);
+});
 });
