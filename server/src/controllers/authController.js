@@ -110,7 +110,18 @@ async function loginUser(req,res){
   }
 }
 
+async function getCurrentUser(req,res){
+  try{
+    const user=await User.findById(req.user.id).select("-password");
+    return res.status(200).json(user);
+  }catch(error){
+    return res.status(500).json({
+      message: "Internal Server Error."
+    });
+  }
+}
 module.exports={
   registerUser,
-  loginUser
+  loginUser,
+  getCurrentUser
 };
