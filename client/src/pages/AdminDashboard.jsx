@@ -1,5 +1,5 @@
 function AdminDashboard(){
-  const user=JSON.stringify(localStorage.getItem("user"));
+  const user=JSON.parse(localStorage.getItem("user"));
   return (
     <div>
       <h1>Admin Dashboard</h1>
