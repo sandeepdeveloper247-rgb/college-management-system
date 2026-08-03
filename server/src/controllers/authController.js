@@ -34,7 +34,7 @@ async function registerUser(req,res){
       password: hashedPassword,
       department,
       semester,
-      role
+      role: "student"
     });
 
     res.status(201).json({
