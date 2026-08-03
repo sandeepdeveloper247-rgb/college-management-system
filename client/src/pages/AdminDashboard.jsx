@@ -1,0 +1,13 @@
+function AdminDashboard(){
+  const user=JSON.stringify(localStorage.getItem("user"));
+  return (
+    <div>
+      <h1>Admin Dashboard</h1>
+      <h2>Welcome {user.name}</h2>
+      <p>Email: {user.email}</p>
+      <p>Role: {user.role}</p>
+    </div>
+  );
+}
+
+export default AdminDashboard;
