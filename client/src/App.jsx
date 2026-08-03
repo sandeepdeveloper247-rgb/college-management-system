@@ -5,11 +5,18 @@ import Register from "./pages/Register";
 import StudentDashboard from "./pages/StudentDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
+import PublicRoute from "./routes/PublicRoute";
 function App(){
   return(
     <Routes>
-      <Route path="/" element={<Login/>}/>
-      <Route path="/register" element={<Register/>}/>
+      <Route path="/" element={
+        <PublicRoute>
+            <Login />
+        </PublicRoute>}/>
+      <Route path="/register" element={
+        <PublicRoute>
+            <Register />
+        </PublicRoute>}/>
       <Route path="/student/dashboard" element={
         <ProtectedRoute>
             <StudentDashboard />
