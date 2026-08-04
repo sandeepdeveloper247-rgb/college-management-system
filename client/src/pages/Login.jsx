@@ -1,11 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../services/api";
+import { useContext } from "react";
+import { AuthContext } from "../context/AuthContext";
 
 function Login(){
   const[email,setEmail]=useState("");
   const[password,setPassword]=useState("");
   const navigate=useNavigate();
+  const { setUser, setToken } = useContext(AuthContext);
   async function handleSubmit(e){
   e.preventDefault();
   // console.log(email);
@@ -18,6 +21,8 @@ function Login(){
     // console.log(response.data);
     localStorage.setItem("token",response.data.token);
     localStorage.setItem("user",JSON.stringify(response.data.user));
+    setToken(response.data.token);
+    setUser(response.data.user);
     console.log("Login Successful");
     if(response.data.user.role==="admin"){
       navigate("/admin/dashboard");
