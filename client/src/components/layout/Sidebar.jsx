@@ -52,7 +52,7 @@ function Sidebar() {
     {user?.role === "admin" && (
         <>
             <Link
-                to="#"
+                to="/admin/students"
                 className="px-4 py-2 rounded hover:bg-slate-700"
             >
                 Students
@@ -75,7 +75,7 @@ function Sidebar() {
     </Link>
 
     <Link
-        to="#"
+        to="/profile"
         className="px-4 py-2 rounded hover:bg-slate-700"
     >
         Profile

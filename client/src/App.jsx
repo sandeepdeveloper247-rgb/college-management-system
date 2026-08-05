@@ -4,6 +4,9 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import StudentDashboard from "./pages/StudentDashboard";
 import AdminDashboard from "./pages/AdminDashboard";
+import Profile from "./pages/Profile";
+import Students from "./pages/Students";
+
 import ProtectedRoute from "./routes/ProtectedRoute";
 import PublicRoute from "./routes/PublicRoute";
 function App(){
@@ -27,6 +30,22 @@ function App(){
             <AdminDashboard />
         </ProtectedRoute>
       }/>
+      <Route
+        path="/profile"
+        element={
+            <ProtectedRoute>
+                <Profile />
+            </ProtectedRoute>
+          }
+      />
+      <Route
+        path="/admin/students"
+        element={
+          <ProtectedRoute>
+            <Students/>
+          </ProtectedRoute>
+        }
+      />
     </Routes>
   );
 }

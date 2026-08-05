@@ -1,22 +1,25 @@
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import DashboardLayout from "../components/layout/DashboardLayout";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 function StudentDashboard(){
   // const user=JSON.parse(localStorage.getItem("user"));
-  const { user, setUser, setToken } = useContext(AuthContext);
-  const navigate=useNavigate();
+  const { user } = useContext(AuthContext);
+  if (!user) {
+    return null;
+  } 
+  // const navigate=useNavigate();
   // const { setUser, setToken } = useContext(AuthContext);
-  function handleLogout(){
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
+  // function handleLogout(){
+  //   localStorage.removeItem("token");
+  //   localStorage.removeItem("user");
 
-    setUser(null);
-    setToken(null);
+  //   setUser(null);
+  //   setToken(null);
 
-    navigate("/");
-  }
+  //   navigate("/");
+  // }
   return (
     // <div className="min-h-screen flex items-center justify-center bg-gray-100">
     //   <div className="bg-white p-8 rounded-xl shadow-lg">
