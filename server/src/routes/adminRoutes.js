@@ -1,7 +1,7 @@
 const express=require("express");
 const authenticateUser=require("../middleware/authMiddleware");
 const authorizeRoles=require("../middleware/roleMiddleware");
-const {getAllStudents,deleteStudent}=require("../controllers/adminController")
+const {getAllStudents,deleteStudent,updateStudent,createStudent,}=require("../controllers/adminController")
 
 const router = express.Router();
 
@@ -19,10 +19,22 @@ router.get(
     authorizeRoles("admin"),
     getAllStudents
 );
+router.post(
+    "/students",
+    authenticateUser,
+    authorizeRoles("admin"),
+    createStudent
+);
 router.delete(
     "/students/:id",
     authenticateUser,
     authorizeRoles("admin"),
     deleteStudent
+);
+router.put(
+    "/students/:id",
+    authenticateUser,
+    authorizeRoles("admin"),
+    updateStudent
 );
 module.exports=router;
